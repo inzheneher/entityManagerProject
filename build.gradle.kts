@@ -31,3 +31,14 @@ dependencies {
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
+
+tasks.withType<Test> {
+    maxParallelForks = (Runtime.getRuntime().availableProcessors() / 2).takeIf { it > 0 } ?: 1
+    setForkEvery(100)
+    reports.html.isEnabled = false
+    reports.junitXml.isEnabled = false
+}
+
+tasks.withType<JavaCompile> {
+    options.isFork = true
+}

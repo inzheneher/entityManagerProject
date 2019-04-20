@@ -10,9 +10,20 @@ repositories {
 }
 
 dependencies {
+    implementation(
+            "org.hibernate",
+            "hibernate-core",
+            "5.4.2.Final"
+    )
+    implementation(
+            "com.h2database",
+            "h2",
+            "1.4.199"
+
+    )
     testImplementation(
-            "org.junit.jupiter", 
-            "junit-jupiter-api", 
+            "org.junit.jupiter",
+            "junit-jupiter-api",
             "5.4.2"
     )
 }

@@ -1,27 +1,30 @@
+import conf.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = Configuration.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MovieTest {
-
+    @Autowired
+    private EntityManagerFactory emf;
     private EntityManager em;
     private Movie movieFromPersist;
     private final static String SELECT_QUERY = "FROM Movie WHERE id = %s";
 
     @BeforeAll
     void setUp() {
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory(
-                        "org.mav"
-                );
         em = emf.createEntityManager();
 
         em.getTransaction().begin();

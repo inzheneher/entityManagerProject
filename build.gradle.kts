@@ -21,10 +21,30 @@ dependencies {
             "1.4.199"
 
     )
+    implementation(
+            "org.springframework",
+            "spring-context",
+            "5.1.6.RELEASE"
+    )
+    implementation(
+            "org.springframework",
+            "spring-orm",
+            "5.1.6.RELEASE"
+    )
+    implementation(
+            "commons-dbcp",
+            "commons-dbcp",
+            "1.4"
+    )
     testImplementation(
             "org.junit.jupiter",
             "junit-jupiter-api",
             "5.4.2"
+    )
+    testImplementation(
+            "org.springframework", 
+            "spring-test", 
+            "5.1.6.RELEASE"
     )
 }
 
